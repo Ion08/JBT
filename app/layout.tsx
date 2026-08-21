@@ -1,7 +1,7 @@
 import "./globals.css";
 export const metadata = {
   title: "JBT — Combat Robotics · Moldova",
-  description: "JBT is a combat robotics team from Moldova, built by three experienced young roboticists from RoboRangers. Built to fight. Designed to win.",
+  description: "JBT: three RoboRangers building combat robots. CAD to arena.",
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

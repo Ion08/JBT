@@ -12,13 +12,13 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     <nav class="nav-links" id="nav-menu" aria-label="Main">
       <a href="#about">About</a>
       <a href="#arsenal">Arsenal</a>
-      <a href="#engineering">Engineering</a>
+      <a href="#engineering">Build</a>
       <a href="#team">Team</a>
       <a href="#heritage">Heritage</a>
       <a href="#sponsors">Sponsors</a>
       <a href="#contact">Contact</a>
     </nav>
-    <span class="nav-status"><i aria-hidden="true"></i>JB-01 · REV D · BUILD ACTIVE</span>
+    <span class="nav-status"><i aria-hidden="true"></i>JB-01 · REV D</span>
   </div>
 </header>
 
@@ -28,35 +28,20 @@ const html = `<a class="skip" href="#main">Skip to content</a>
   <div class="container" style="max-width:72rem">
     <div class="hero-6xl">
       <div class="hero-copy">
-        <p class="kicker hero-anim hero-anim-1">Combat Robotics · Chișinău · Moldova</p>
+        <p class="kicker hero-anim hero-anim-1">Combat Robotics · Chișinău</p>
         <h1 class="hero-h1 hero-anim hero-anim-2">JBT</h1>
         <p class="hero-tagline hero-anim hero-anim-3">Built to fight.<br><em>Engineered to win.</em></p>
-        <p class="hero-lede hero-anim hero-anim-4">Three builders from RoboRangers. We design, machine, wire and program combat robots from scratch — CAD to arena.</p>
+        <p class="hero-lede hero-anim hero-anim-4">Three RoboRangers building combat robots — CAD to arena.</p>
         <div class="hero-actions hero-anim hero-anim-5">
-          <a class="btn btn-solid" href="#arsenal">Enter the arsenal</a>
-          <a class="btn btn-ghost" href="#sponsors">Back the team</a>
-        </div>
-        <div class="hero-meta hero-anim hero-anim-6">
-          <span>EST <b>2026</b></span>
-          <span>DIVISION <b>ROBORANGERS</b></span>
-          <span>STATUS <b>CLEARANCE PENDING — JB-01</b></span>
+          <a class="btn btn-solid" href="#arsenal">See builds</a>
+          <a class="btn btn-ghost" href="#sponsors">Sponsor</a>
         </div>
       </div>
       <div class="hero-media frame hero-anim hero-anim-3">
         <img src="jbt-3x.png" alt="Ion, Bogdan and Anatolii — JBT" loading="eager">
-        <span class="hud hud-tl">JBT-3X · FRAME 01</span>
-        <span class="hud hud-tr">47.01°N 28.86°E</span>
-        <span class="hud hud-bl">ION · BOGDAN · ANATOLII</span>
+        <span class="hud hud-tl">JBT-3X</span>
         <span class="hud hud-br">● REC</span>
       </div>
-    </div>
-  </div>
-  <div class="stats" style="margin-top:88px">
-    <div class="stats-inner">
-      <div class="stat"><b>03</b><span>Builders · one bot</span></div>
-      <div class="stat"><b>150<i>G</i>–1.4<i>KG</i></b><span>Class range</span></div>
-      <div class="stat"><b>07</b><span>Step build cycle</span></div>
-      <div class="stat"><b>05<i>×</i></b><span>First Global golds — heritage</span></div>
     </div>
   </div>
 </section>
@@ -66,22 +51,19 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     <div class="sec-head rv">
       <span class="sec-idx">01</span>
       <div>
-        <p class="kicker">Manifesto</p>
-        <h2>Not a student project. An engineering team.</h2>
+        <p class="kicker">About</p>
+        <h2>JBT — Johnny, Bogdi, Tony.</h2>
       </div>
     </div>
-    <p class="manifesto rv rv-2">Every gram budgeted. Every part modeled. Every hit <em>instrumented</em>. Then broken, redesigned, and built again.</p>
     <div class="cols rv rv-3">
-      <p>JBT = <strong>Johnny, Bogdi, Tony</strong>. Three RoboRangers who spent years shipping competition robots now build combat robots under their own name. The discipline is the same — mechatronics, deadlines, weight limits — the consequence level is higher.</p>
-      <p>Combat robotics is engineering under fire: a 90-second fight audits every decision you made for six months. That is the standard we build to.</p>
+      <p>Three RoboRangers. Years competing in FLL, FTC, and FIRST Global. Now building combat robots under our own name.</p>
+      <p>Weight limits, deadlines, 90-second fights. Same discipline, higher consequence.</p>
     </div>
-    <div class="disciplines rv rv-4" style="margin-top:36px">
-      <span class="chip">Mechanical / CAD</span>
+    <div class="disciplines rv rv-4" style="margin-top:28px">
+      <span class="chip">CAD / Mechanical</span>
       <span class="chip">Electronics</span>
       <span class="chip">Firmware</span>
-      <span class="chip">CNC &amp; 3D Printing</span>
-      <span class="chip">Materials</span>
-      <span class="chip">Strategy</span>
+      <span class="chip">CNC & 3D Print</span>
     </div>
   </div>
 </section>
@@ -92,22 +74,22 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <span class="sec-idx">02</span>
       <div>
         <p class="kicker">Arsenal</p>
-        <h2>Reference platforms we study while JB-01 is on the bench.</h2>
+        <h2>Reference builds — JB-01 on the bench.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2">Full 3D models, drag to rotate, explode to inspect. Source archives downloadable — we learn in public.</p>
+    <p class="lede rv rv-2">Drag to rotate. Sources downloadable.</p>
     <div class="v3d-grid">
       <article class="card v3d-card rv" style="padding:0;overflow:hidden">
         <div class="v3d-head">
-          <h3>P-01 · Yeetus V3</h3>
-          <span class="tag">Reference · Overhead saw</span>
+          <h3>Yeetus V3</h3>
+          <span class="tag">Beetleweight · Overhead saw</span>
         </div>
-        <div class="v3d" data-src="/yeetus.glb" data-size="YEETUS · 676KB" data-preview="yeetus.png"></div>
+        <div class="v3d" data-src="/yeetus.glb" data-size="676KB" data-preview="yeetus.png"></div>
         <div class="v3d-body">
           <div>
-            <p class="bio">Beetleweight overhead saw. Carbon arm, high reach. Reference for weapon geometry and energy transfer.</p>
+            <p class="bio">Carbon arm, high reach. Study for weapon geometry.</p>
             <div class="v3d-ctl">
-              <a class="v3d-btn" href="beetleweight-combat-robot-yeetus-v3-1.snapshot.2.zip" download>Download .ZIP</a>
+              <a class="v3d-btn" href="beetleweight-combat-robot-yeetus-v3-1.snapshot.2.zip" download>ZIP</a>
               <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
@@ -116,53 +98,50 @@ const html = `<a class="skip" href="#main">Skip to content</a>
             <div class="spec"><dt>Class</dt><dd>Beetleweight</dd></div>
             <div class="spec"><dt>Weapon</dt><dd>Overhead saw</dd></div>
             <div class="spec"><dt>Drive</dt><dd>2WD</dd></div>
-            <div class="spec"><dt>Format</dt><dd>GLB + STP</dd></div>
           </dl>
         </div>
       </article>
       <article class="card v3d-card rv" style="padding:0;overflow:hidden">
         <div class="v3d-head">
-          <h3>P-02 · Kintsurugi V1</h3>
-          <span class="tag">Reference · 4WD vert</span>
+          <h3>Kintsurugi V1</h3>
+          <span class="tag">Beetleweight · Vert spinner</span>
         </div>
-        <div class="v3d" data-src="/kintsurugi.glb" data-size="KINTSURUGI · 935KB"></div>
+        <div class="v3d" data-src="/kintsurugi.glb" data-size="935KB"></div>
         <div class="v3d-body">
           <div>
-            <p class="bio">Compact 4WD vertical spinner. Reference for durability and packaging density.</p>
+            <p class="bio">Compact 4WD vert. Study for durability and packaging.</p>
             <div class="v3d-ctl">
-              <a class="v3d-btn" href="kintsurugi-v1-beetleweight-combat-robot-1.snapshot.1.zip" download>Download .ZIP</a>
+              <a class="v3d-btn" href="kintsurugi-v1-beetleweight-combat-robot-1.snapshot.1.zip" download>ZIP</a>
               <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
           </div>
           <dl class="specs">
             <div class="spec"><dt>Class</dt><dd>Beetleweight</dd></div>
-            <div class="spec"><dt>Weapon</dt><dd>Vert spinner</dd></div>
+            <div class="spec"><dt>Weapon</dt><dd>Vert</dd></div>
             <div class="spec"><dt>Drive</dt><dd>4WD</dd></div>
-            <div class="spec"><dt>Format</dt><dd>GLB + STP</dd></div>
           </dl>
         </div>
       </article>
       <article class="card v3d-card rv" style="padding:0;overflow:hidden">
         <div class="v3d-head">
-          <h3>P-03 · Jigsaw V1</h3>
-          <span class="tag">Reference · Undercutter</span>
+          <h3>Jigsaw V1</h3>
+          <span class="tag">150g · Undercutter</span>
         </div>
-        <div class="v3d" data-src="/jigsaw.glb" data-size="JIGSAW · 325KB"></div>
+        <div class="v3d" data-src="/jigsaw.glb" data-size="325KB"></div>
         <div class="v3d-body">
           <div>
-            <p class="bio">Plastic antweight, 150g. 3D-printed undercutter — closest living relative of JB-01.</p>
+            <p class="bio">3D-printed plastic antweight. Closest to JB-01.</p>
             <div class="v3d-ctl">
-              <a class="v3d-btn" href="plastic-antweight-combat-robot-jigsaw-1.snapshot.2.zip" download>Download .ZIP</a>
+              <a class="v3d-btn" href="plastic-antweight-combat-robot-jigsaw-1.snapshot.2.zip" download>ZIP</a>
               <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
           </div>
           <dl class="specs">
             <div class="spec"><dt>Class</dt><dd>Plastic ant</dd></div>
-            <div class="spec"><dt>Mass</dt><dd>150 g</dd></div>
+            <div class="spec"><dt>Mass</dt><dd>150g</dd></div>
             <div class="spec"><dt>Weapon</dt><dd>Undercutter</dd></div>
-            <div class="spec"><dt>Format</dt><dd>GLB + STP</dd></div>
           </dl>
         </div>
       </article>
@@ -175,19 +154,18 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     <div class="sec-head rv">
       <span class="sec-idx">03</span>
       <div>
-        <p class="kicker">Engineering</p>
+        <p class="kicker">Build</p>
         <h2>Design → print → test → repeat.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2">A fight is 90 seconds. The method that wins it is this loop, run until the robot stops breaking.</p>
     <ol class="steps rv rv-3">
-      <li><span class="step-n">01</span><h3>Design</h3><p>Weight budget + weapon concept.</p></li>
-      <li><span class="step-n">02</span><h3>CAD</h3><p>Model, simulate, test-fit.</p></li>
+      <li><span class="step-n">01</span><h3>Design</h3><p>Weight budget, weapon.</p></li>
+      <li><span class="step-n">02</span><h3>CAD</h3><p>Model, test-fit.</p></li>
       <li><span class="step-n">03</span><h3>Print</h3><p>PETG-CF chassis.</p></li>
       <li><span class="step-n">04</span><h3>Assemble</h3><p>Drive, weapon, electronics.</p></li>
-      <li><span class="step-n">05</span><h3>Test</h3><p>Drive + weapon + hits.</p></li>
+      <li><span class="step-n">05</span><h3>Test</h3><p>Drive and hits.</p></li>
       <li><span class="step-n">06</span><h3>Iterate</h3><p>Break, fix, reprint.</p></li>
-      <li><span class="step-n">07</span><h3>Fight</h3><p>Arena. Full send.</p></li>
+      <li><span class="step-n">07</span><h3>Fight</h3><p>Arena.</p></li>
     </ol>
   </div>
 </section>
@@ -197,40 +175,34 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     <div class="sec-head rv">
       <span class="sec-idx">04</span>
       <div>
-        <p class="kicker">Crew</p>
-        <h2>Three builders. One bot.</h2>
+        <p class="kicker">Team</p>
+        <h2>Three builders.</h2>
       </div>
     </div>
     <div class="grid-3">
       <article class="card rv">
         <div class="portrait">
           <img src="Ion_pavelescu.jpg" alt="Ion Pavelescu" loading="lazy">
-          <span class="ph-tag">FILE · JP-01</span>
         </div>
         <h3>Ion Pavelescu</h3>
         <p class="role">Engineer · Mentor</p>
-        <p class="skills">Robotics / Programming / AI</p>
-        <p class="bio">FIRST Global gold. Mentored 20+ teams, ran events for 800+ participants. FLL, FTC, FIRST Global, IOAI.</p>
+        <p class="bio">FIRST Global gold. Mentored 20+ teams. Ran events for 800+ participants.</p>
       </article>
       <article class="card rv rv-2">
         <div class="portrait">
           <img src="Bogdan_Moraru.JPG" alt="Bogdan Moraru" loading="lazy" style="transform:scale(1.6)">
-          <span class="ph-tag">FILE · BM-02</span>
         </div>
-        <h3>Bogdan Moraru <span style="color:var(--muted);font-weight:400">· Bogdi</span></h3>
+        <h3>Bogdan Moraru</h3>
         <p class="role">Software · Builder</p>
-        <p class="skills">Programming / Robotics / Design</p>
-        <p class="bio">Builds RoboRangers, Thaloss, JoBoTo. Code, CAD and electronics turned into working robots.</p>
+        <p class="bio">RoboRangers / Thaloss / JoBoTo. Programming, CAD, electronics.</p>
       </article>
       <article class="card rv rv-3">
         <div class="portrait">
           <img src="Anatolii_Suharschi.JPG" alt="Anatolii Suharschi" loading="lazy">
-          <span class="ph-tag">FILE · AS-03</span>
         </div>
         <h3>Anatolii Suharschi</h3>
         <p class="role">Engineer · Maker</p>
-        <p class="skills">CAD / Mechanical / AI</p>
-        <p class="bio">Builds RoboRangers, Thaloss, JoBoTo. CAD, mechanics, programming.</p>
+        <p class="bio">RoboRangers / Thaloss / JoBoTo. CAD, mechanics, programming.</p>
       </article>
     </div>
   </div>
@@ -242,28 +214,20 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <span class="sec-idx">05</span>
       <div>
         <p class="kicker">Heritage · RoboRangers · Since 2017</p>
-        <h2>Started in FIRST. Now combat.</h2>
+        <h2>From FIRST to combat.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2" style="margin-top:20px">From RoboRangers, 4th generation team at Tekwill Academy Kids — the most decorated robotics program in Moldova.</p>
     <ol class="log rv rv-3">
-      <li class="log-row"><span class="log-n">2017</span><span class="log-t">Moldova enters FIRST Global</span><span class="log-d">ENTRY</span></li>
-      <li class="log-row"><span class="log-n">2019 · DUBAI</span><span class="log-t">3 medals</span><span class="log-d">MEDAL ×3</span></li>
-      <li class="log-row"><span class="log-n">2023 · SINGAPORE</span><span class="log-t">Gold Innovation + Silver Energy · 190 teams</span><span class="log-d">GOLD</span></li>
-      <li class="log-row"><span class="log-n">2024 · ATHENS</span><span class="log-t">2 Golds — World Champion Alliance · 193 teams</span><span class="log-d">GOLD ×2</span></li>
-      <li class="log-row"><span class="log-n">2025 · PANAMA</span><span class="log-t">Gold — 5th in a row · 191 teams</span><span class="log-d">GOLD</span></li>
-      <li class="log-row"><span class="log-n">2026 · ISTANBUL</span><span class="log-t">Inspire Award 2nd — first for Moldova (FTC)</span><span class="log-d">AWARD</span></li>
-      <li class="log-row"><span class="log-n">2026 · HONG KONG</span><span class="log-t">FLL 3rd + Robot Performance Finalist</span><span class="log-d">AWARD</span></li>
+      <li class="log-row"><span class="log-n">2023 · Singapore</span><span class="log-t">Gold Innovation + Silver Energy · 190 teams</span><span class="log-d">GOLD</span></li>
+      <li class="log-row"><span class="log-n">2024 · Athens</span><span class="log-t">2 Golds — World Champion Alliance · 193 teams</span><span class="log-d">GOLD ×2</span></li>
+      <li class="log-row"><span class="log-n">2025 · Panama</span><span class="log-t">Gold — 5th consecutive · 191 teams</span><span class="log-d">GOLD</span></li>
+      <li class="log-row"><span class="log-n">2026 · Istanbul</span><span class="log-t">Inspire Award 2nd (FTC) — first for Moldova</span><span class="log-d">AWARD</span></li>
+      <li class="log-row"><span class="log-n">2026 · Hong Kong</span><span class="log-t">FLL 3rd + Robot Performance Finalist</span><span class="log-d">AWARD</span></li>
     </ol>
     <figure class="frame heritage-fig rv rv-2" style="margin-top:44px;padding:0;overflow:hidden">
       <img src="roborangers_team.JPG" alt="RoboRangers team" loading="lazy">
-      <figcaption><span>ROBORANGERS — TEKWILL ACADEMY KIDS</span><span>1,000 KIDS/YR · 4 GENERATIONS</span></figcaption>
+      <figcaption><span>ROBORANGERS — TEKWILL ACADEMY KIDS</span></figcaption>
     </figure>
-    <div class="hero-link rv">
-      <img src="rr-logo.png" alt="RoboRangers" loading="lazy">
-      <span>→</span>
-      <img src="JBT-Logo.svg" alt="JBT" loading="lazy" style="height:96px;width:auto;filter:brightness(0) invert(1);opacity:1">
-    </div>
   </div>
 </section>
 
@@ -272,22 +236,20 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     <div class="sec-head rv">
       <span class="sec-idx">06</span>
       <div>
-        <p class="kicker">Gear · JB-01</p>
-        <h2>Our brand on your back. Our bot on the bench.</h2>
+        <p class="kicker">Gear</p>
+        <h2>Drop 01 — pre-order.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2">Drop 01 funds parts and arena time while we build JB-01. Every tee is a machined part prepaid.</p>
+    <p class="lede rv rv-2">Funds parts and arena time.</p>
     <div class="bot-layout">
       <div class="viewer frame rv">
         <span class="hud hud-tl">DROP 01</span>
         <img src="T-shirts.PNG" alt="JBT t-shirts — Drop 01" loading="lazy">
       </div>
       <dl class="specs rv rv-2" style="margin-top:0">
-        <div class="spec"><dt>Drop</dt><dd>01 · Pre-order</dd></div>
         <div class="spec"><dt>Fit</dt><dd>Unisex · 240gsm</dd></div>
         <div class="spec"><dt>Colors</dt><dd>Black / White</dd></div>
         <div class="spec"><dt>Sizes</dt><dd>S — XXL</dd></div>
-        <div class="spec"><dt>Print</dt><dd>Front &amp; sleeve</dd></div>
       </dl>
     </div>
   </div>
@@ -299,23 +261,20 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <span class="sec-idx">07</span>
       <div>
         <p class="kicker">Sponsors</p>
-        <h2>Put your name on the bot. Your logo on the merch.</h2>
+        <h2>Put your logo on the bot.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2">Your brand on the robot, pit banner, shirts and site — visible at every fight and in every build log.</p>
     <div class="grid-3">
       <article class="card rv">
-        <p class="role">Supporter</p>
-        <span class="price">€50+</span>
+        <p class="role">Supporter · €50+</p>
         <h3 style="margin-top:0">Wall of Fame</h3>
         <ul class="tier-list">
-          <li>Name on jbt.md</li>
-          <li>Social shout-out</li>
+          <li>Name on site</li>
+          <li>Social post</li>
         </ul>
       </article>
       <article class="card rv rv-2">
-        <p class="role">Bronze</p>
-        <span class="price">€150+</span>
+        <p class="role">Bronze · €150+</p>
         <h3 style="margin-top:0">Pit Banner</h3>
         <ul class="tier-list">
           <li>Logo on pit banner (1.5m)</li>
@@ -323,33 +282,29 @@ const html = `<a class="skip" href="#main">Skip to content</a>
         </ul>
       </article>
       <article class="card rv rv-3 tier-top">
-        <p class="role">Silver</p>
-        <span class="price">€400+</span>
+        <p class="role">Silver · €400+</p>
         <h3 style="margin-top:0">On The Bot</h3>
         <ul class="tier-list">
           <li>Logo on JB-01 armor</li>
-          <li>Pit + site placement</li>
+          <li>Pit + site</li>
         </ul>
       </article>
     </div>
     <div class="grid-3" style="margin-top:1px">
       <article class="card rv tier-top">
-        <p class="role">Gold</p>
-        <span class="price">€800+</span>
+        <p class="role">Gold · €800+</p>
         <h3 style="margin-top:0">On The Merch</h3>
         <ul class="tier-list">
           <li>Sleeve print, Drop 02</li>
           <li>Bot + pit + site</li>
-          <li>5 shirts included</li>
         </ul>
       </article>
       <article class="card rv rv-2 tier-title">
-        <p class="role" style="color:#FFD700">Title Partner</p>
-        <span class="price">€2000+</span>
+        <p class="role" style="color:#FFD700">Title · €2000+</p>
         <h3 style="margin-top:0">JBT × Your Brand</h3>
         <ul class="tier-list">
           <li>Co-title + top plate</li>
-          <li>Largest logos everywhere</li>
+          <li>Largest logos</li>
         </ul>
       </article>
       <article class="card rv rv-3" style="display:flex;flex-direction:column;justify-content:center">
@@ -358,36 +313,8 @@ const html = `<a class="skip" href="#main">Skip to content</a>
         <a class="mailto" href="mailto:team@jbt.md?subject=Custom%20Sponsorship%20—%20JBT" style="margin-top:12px">Tailor a deal →</a>
       </article>
     </div>
-    <div class="rv" style="margin-top:40px;padding:20px;border:1px solid var(--line);background:var(--panel);display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-      <img src="T-shirts.PNG" alt="JBT T-shirt" style="height:64px;width:auto;border:1px solid var(--line)">
-      <div>
-        <p style="font:600 .9rem var(--disp);margin-bottom:4px">Drop 02 — your logo could be on it.</p>
-        <p style="font:400 .76rem var(--mono);color:var(--muted)">Join before Rev D.</p>
-      </div>
-    </div>
     <div class="rv" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
       <a class="btn btn-solid btn-big" href="mailto:team@jbt.md?subject=Sponsorship%20—%20JBT">Put logo on bot</a>
-      <a class="btn btn-ghost btn-big" href="mailto:team@jbt.md?subject=Put%20my%20logo%20on%20your%20merch%20—%20JBT">Put logo on merch</a>
-    </div>
-  </div>
-</section>
-
-<section id="media">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="sec-idx">08</span>
-      <div>
-        <p class="kicker">Media</p>
-        <h2>Build on record.</h2>
-      </div>
-    </div>
-    <div class="media-grid rv rv-2">
-      <figure class="ph"><img src="roborangers_team.JPG" alt="Istanbul" loading="lazy"><figcaption>Istanbul 2026</figcaption></figure>
-      <figure class="ph"><img src="yeetus.png" alt="CAD" loading="lazy"><figcaption>CAD · Yeetus V3</figcaption></figure>
-      <figure class="ph"><img src="T-shirts.PNG" alt="Merch" loading="lazy"><figcaption>Merch · Drop 01</figcaption></figure>
-      <figure class="ph"><img src="Ion_Pavelescu_new.JPG" alt="Ion" loading="lazy"><figcaption>Pit</figcaption></figure>
-      <figure class="ph"><img src="Bogdan_Moraru.JPG" alt="Bogdan" loading="lazy" style="object-position:50% 20%"><figcaption>Build</figcaption></figure>
-      <figure class="ph"><img src="Anatolii_Suharschi.JPG" alt="Anatolii" loading="lazy"><figcaption>Workshop</figcaption></figure>
     </div>
   </div>
 </section>
@@ -395,13 +322,12 @@ const html = `<a class="skip" href="#main">Skip to content</a>
 <section id="contact">
   <div class="container">
     <div class="sec-head rv">
-      <span class="sec-idx">09</span>
+      <span class="sec-idx">08</span>
       <div>
         <p class="kicker">Contact</p>
-        <h2>Talk to the pit crew.</h2>
+        <h2>Talk to us.</h2>
       </div>
     </div>
-    <p class="lede rv rv-2">Sponsors, press, collaborators — we reply within 24 hours.</p>
     <a class="contact-mail rv rv-3" href="mailto:team@jbt.md">TEAM@JBT.MD</a>
     <div class="socials rv rv-4">
       <a href="#" rel="noopener">Instagram</a>
@@ -429,7 +355,7 @@ const html = `<a class="skip" href="#main">Skip to content</a>
         <p class="foot-line">Ion Pavelescu · Bogdan Moraru · Anatolii Suharschi</p>
       </div>
       <p class="foot-coords">
-        47.0105°N 28.8638°E<br>CHIȘINĂU · MD
+        47.01°N 28.86°E<br>CHIȘINĂU
       </p>
     </div>
     <p class="foot-built">Built in Moldova.</p>

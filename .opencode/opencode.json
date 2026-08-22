@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "list"
+  ],
+  "permission": {
+    "skill": {
+      "*": "allow",
+      "unlazy": "allow"
+    }
+  },
+  "instructions": [
+    ".opencode/skills/unlazy/SKILL.md",
+    "~/.agents/skills/unlazy/SKILL.md"
+  ]
+}

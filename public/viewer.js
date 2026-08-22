@@ -1,81 +1,93 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
-
-const isMobile = matchMedia('(pointer:coarse)').matches
-
-const draco = new DRACOLoader()
-draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
-draco.setDecoderConfig({ type: 'js' }) // wasm-js fallback, smaller + works everywhere
-const loader = new GLTFLoader()
-loader.setDRACOLoader(draco)
+// JBT arsenal viewer — three.js, pre-built GLBs, explode + reset + auto-rotate.
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/DRACOLoader.js'
 
 document.querySelectorAll('.v3d').forEach(el=>{
   const src=el.dataset.src
   const size=el.dataset.size||''
   const preview=el.dataset.preview||''
-  let inited=false
-
-  function placeholder(loading){
-    el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#111">
-      ${preview?`<img src="${preview}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.35">`:''}
-      <span style="position:relative;font:500 .7rem var(--mono);letter-spacing:.15em;color:var(--faint)">${loading?'LOADING '+size:size}</span>
-      ${loading?'':'<span style="position:relative;font:400 .6rem var(--mono);color:var(--faint)">auto-loads on scroll</span>'}
-    </div>`
-  }
-  placeholder(false)
-
-  // auto-init when scrolled into view (with margin so it's ready on arrival)
-  const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)&&!inited){ inited=true; io.disconnect(); init() } },{rootMargin:'400px'})
-  io.observe(el)
-
-  // pause rendering when offscreen
-  let onScreen=true
-  const ioPause=new IntersectionObserver(es=>{ onScreen=es.some(e=>e.isIntersecting) })
-  ioPause.observe(el)
+  el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0b0b0d">
+    ${preview?`<img src="${preview}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.3">`:''}
+    <span style="position:relative;font:500 .68rem var(--mono);letter-spacing:.22em;color:var(--faint)">${size}</span>
+    <button class="v3d-btn v3d-load" type="button" style="position:relative">Load model</button>
+    <span style="position:relative;font:400 .58rem var(--mono);letter-spacing:.14em;color:var(--faint)">PRE-BUILT GLB · NO PARSING</span>
+  </div>`
+  el.querySelector('.v3d-load').onclick=init
 
   async function init(){
-    placeholder(true)
+    const btn=el.querySelector('.v3d-load')
+    if(btn){btn.textContent='LOADING…';btn.disabled=true}
     const w=el.clientWidth,h=el.clientHeight||w*0.5625
-    const scene=new THREE.Scene(); scene.background=new THREE.Color(0x111111)
+    const scene=new THREE.Scene()
+    scene.background=new THREE.Color(0x0b0b0d)
+    scene.fog=new THREE.Fog(0x0b0b0d,10,60)
     const camera=new THREE.PerspectiveCamera(45,w/h,0.1,1000)
-    const renderer=new THREE.WebGLRenderer({
-      antialias: !isMobile && devicePixelRatio<1.5, // dpr>=1.5 doesn't need AA
-      powerPreference: isMobile?'low-power':'high-performance',
-    })
-    renderer.setSize(w,h)
-    renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile?1.25:1.75))
-    el.innerHTML=''; el.appendChild(renderer.domElement)
+    const renderer=new THREE.WebGLRenderer({antialias:true})
+    renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2))
+    el.innerHTML='';el.appendChild(renderer.domElement)
     const controls=new OrbitControls(camera,renderer.domElement)
-    controls.enableDamping=true; controls.dampingFactor=0.08
-    scene.add(new THREE.HemisphereLight(0xffffff,0x222222,1.35))
-    const dl=new THREE.DirectionalLight(0xffffff,0.9); dl.position.set(5,10,7); scene.add(dl)
-    const group=new THREE.Group(); scene.add(group)
-    let meshes=[],center=new THREE.Vector3()
-    let renderNeeded=true
-    const ro=new ResizeObserver(()=>{const nw=el.clientWidth,nh=el.clientHeight; camera.aspect=nw/nh; camera.updateProjectionMatrix(); renderer.setSize(nw,nh); renderNeeded=true}); ro.observe(el)
+    controls.enableDamping=true
+    controls.autoRotate=true;controls.autoRotateSpeed=1.1
+    controls.addEventListener('start',()=>{controls.autoRotate=false})
+    // lights: neutral key, purple rim — machined look
+    scene.add(new THREE.HemisphereLight(0xdfe4ea,0x0a0a0c,1.05))
+    const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(5,10,7);scene.add(key)
+    const rim=new THREE.DirectionalLight(0x8A2BE2,1.1);rim.position.set(-6,4,-6);scene.add(rim)
+    const group=new THREE.Group();scene.add(group)
+    const meshes=[];const center=new THREE.Vector3();let exploded=false
+    let grid=null
+    const ro=new ResizeObserver(()=>{
+      const nw=el.clientWidth,nh=el.clientHeight
+      camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh)
+    });ro.observe(el)
     try{
-      const gltf=await loader.loadAsync(src)
-      gltf.scene.traverse(o=>{ if(o.isMesh){ o.material=new THREE.MeshStandardMaterial({color:0x8A2BE2, metalness:0.4, roughness:0.6}); meshes.push(o) } })
+      const loader=new GLTFLoader()
+      const draco=new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+      loader.setDRACOLoader(draco)
+      const gltf=await new Promise((res,rej)=>loader.load(src,res,undefined,rej))
+      const steel=()=>new THREE.MeshStandardMaterial({color:0x8d939c,metalness:.85,roughness:.32})
+      gltf.scene.traverse(o=>{if(o.isMesh){o.material=steel();meshes.push(o)}})
       group.add(gltf.scene)
       const bbox=new THREE.Box3().setFromObject(group)
-      const s=bbox.getSize(new THREE.Vector3()), c=bbox.getCenter(new THREE.Vector3())
-      center.copy(c); group.position.sub(c)
-      const maxDim=Math.max(s.x,s.y,s.z), dist=maxDim*1.6
-      camera.position.set(dist*0.7,dist*0.5,dist*0.9); controls.target.set(0,0,0); controls.update()
-      renderNeeded=true
-    }catch(e){ console.error(e); el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#111;padding:16px;text-align:center">
-      <span style="color:#f88;font:500 .68rem var(--mono)">FAILED TO LOAD GLB</span>
-      <a href="${src}" class="v3d-btn">DOWNLOAD GLB</a>
-    </div>`; return}
+      const s=bbox.getSize(new THREE.Vector3()),c=bbox.getCenter(new THREE.Vector3())
+      center.copy(c);group.position.sub(c)
+      const maxDim=Math.max(s.x,s.y,s.z),dist=maxDim*1.6
+      camera.position.set(dist*0.7,dist*0.5,dist*0.9)
+      controls.target.set(0,0,0);controls.update()
+      grid=new THREE.GridHelper(maxDim*4,24,0x2c2f33,0x1a1c1f)
+      grid.position.y=-s.y/2-maxDim*0.12
+      scene.add(grid)
+      meshes.forEach(m=>{
+        const b=new THREE.Box3().setFromObject(m)
+        const mc=b.getCenter(new THREE.Vector3())
+        m.userData.orig=m.position.clone()
+        m.userData.mc=mc.sub(center).multiplyScalar(0.02)
+      })
+    }catch(e){
+      console.error(e)
+      el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0b0b0d;padding:16px;text-align:center">
+        <span style="color:#f88;font:500 .66rem var(--mono);letter-spacing:.14em">FAILED TO LOAD GLB</span>
+        <a href="${src}" class="v3d-btn" download>Download .GLB</a>
+      </div>`
+      return
+    }
     const card=el.closest('.card')
-    controls.addEventListener('change',()=>{ renderNeeded=true })
-    // on-demand loop: renders only while interacting / onscreen change
-    ;(function loop(){ requestAnimationFrame(loop)
-      if(!onScreen) return
-      controls.update() // damping inertia fires 'change' -> renderNeeded
-      if(renderNeeded){ renderer.render(scene,camera); renderNeeded=false }
-    })()
+    const explode=f=>meshes.forEach(m=>{
+      if(f===0)m.position.copy(m.userData.orig)
+      else m.position.copy(m.userData.orig.clone().add(m.userData.mc.clone().multiplyScalar(f*25)))
+    })
+    const exBtn=card.querySelector('.v3d-explode')
+    if(exBtn)exBtn.onclick=()=>{
+      exploded=!exploded;explode(exploded?1:0)
+      exBtn.textContent=exploded?'Assemble':'Explode'
+    }
+    const rsBtn=card.querySelector('.v3d-reset')
+    if(rsBtn)rsBtn.onclick=()=>{
+      exploded=false;explode(0);controls.reset();controls.autoRotate=true
+      if(exBtn)exBtn.textContent='Explode'
+    }
+    ;(function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)})()
   }
 })

@@ -18,7 +18,7 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <a href="#sponsors">Sponsors</a>
       <a href="#contact">Contact</a>
     </nav>
-    <span class="nav-status"><i aria-hidden="true"></i>JB-01 · REV D</span>
+    <span class="nav-status">JB-01 · REV D</span>
   </div>
 </header>
 
@@ -30,7 +30,7 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <div class="hero-copy">
         <p class="kicker hero-anim hero-anim-1">Combat Robotics · Chișinău</p>
         <h1 class="hero-h1 hero-anim hero-anim-2">JBT</h1>
-        <p class="hero-tagline hero-anim hero-anim-3">Built to fight.<br><em>Engineered to win.</em></p>
+        <p class="hero-tagline hero-anim hero-anim-3">Small bots.<br><em>Real fights.</em></p>
         <p class="hero-lede hero-anim hero-anim-4">Three RoboRangers building combat robots — CAD to arena.</p>
         <div class="hero-actions hero-anim hero-anim-5">
           <a class="btn btn-solid" href="#arsenal">See builds</a>
@@ -40,7 +40,6 @@ const html = `<a class="skip" href="#main">Skip to content</a>
       <div class="hero-media frame hero-anim hero-anim-3">
         <img src="jbt-3x.png" alt="Ion, Bogdan and Anatolii — JBT" loading="eager">
         <span class="hud hud-tl">JBT-3X</span>
-        <span class="hud hud-br">● REC</span>
       </div>
     </div>
   </div>
@@ -231,87 +230,50 @@ const html = `<a class="skip" href="#main">Skip to content</a>
   </div>
 </section>
 
-<section id="gear">
-  <div class="container">
-    <div class="sec-head rv">
-      <span class="sec-idx">06</span>
-      <div>
-        <p class="kicker">Gear</p>
-        <h2>Drop 01 — pre-order.</h2>
-      </div>
-    </div>
-    <p class="lede rv rv-2">Funds parts and arena time.</p>
-    <div class="bot-layout">
-      <div class="viewer frame rv">
-        <span class="hud hud-tl">DROP 01</span>
-        <img src="T-shirts.PNG" alt="JBT t-shirts — Drop 01" loading="lazy">
-      </div>
-      <dl class="specs rv rv-2" style="margin-top:0">
-        <div class="spec"><dt>Fit</dt><dd>Unisex · 240gsm</dd></div>
-        <div class="spec"><dt>Colors</dt><dd>Black / White</dd></div>
-        <div class="spec"><dt>Sizes</dt><dd>S — XXL</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
 <section id="sponsors">
   <div class="container">
     <div class="sec-head rv">
-      <span class="sec-idx">07</span>
+      <span class="sec-idx">06</span>
       <div>
         <p class="kicker">Sponsors</p>
         <h2>Put your logo on the bot.</h2>
       </div>
     </div>
-    <div class="grid-3">
-      <article class="card rv">
-        <p class="role">Supporter · €50+</p>
-        <h3 style="margin-top:0">Wall of Fame</h3>
-        <ul class="tier-list">
-          <li>Name on site</li>
-          <li>Social post</li>
-        </ul>
-      </article>
-      <article class="card rv rv-2">
-        <p class="role">Bronze · €150+</p>
-        <h3 style="margin-top:0">Pit Banner</h3>
-        <ul class="tier-list">
-          <li>Logo on pit banner (1.5m)</li>
-          <li>Logo on site</li>
-        </ul>
-      </article>
-      <article class="card rv rv-3 tier-top">
-        <p class="role">Silver · €400+</p>
-        <h3 style="margin-top:0">On The Bot</h3>
-        <ul class="tier-list">
-          <li>Logo on JB-01 armor</li>
-          <li>Pit + site</li>
-        </ul>
-      </article>
+    <div class="tiers rv rv-3">
+      <div class="tier-row">
+        <span class="tier-name">Supporter</span>
+        <span class="tier-price">€50+</span>
+        <span class="tier-perks">Name on site · social post</span>
+        <span class="tier-flag"></span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name">Bronze</span>
+        <span class="tier-price">€150+</span>
+        <span class="tier-perks">Logo on pit banner (1.5m) · logo on site</span>
+        <span class="tier-flag"></span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name">Silver</span>
+        <span class="tier-price">€400+</span>
+        <span class="tier-perks">Logo on JB-01 armor · pit + site</span>
+        <span class="tier-flag"></span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name">Gold</span>
+        <span class="tier-price">€800+</span>
+        <span class="tier-perks">Sleeve print, Drop 02 · bot + pit + site</span>
+        <span class="tier-flag"></span>
+      </div>
+      <div class="tier-row hot">
+        <span class="tier-name">Title</span>
+        <span class="tier-price">€2000+</span>
+        <span class="tier-perks">JBT × your brand — co-title + top plate, largest logos</span>
+        <span class="tier-flag">Top tier</span>
+      </div>
     </div>
-    <div class="grid-3" style="margin-top:1px">
-      <article class="card rv tier-top">
-        <p class="role">Gold · €800+</p>
-        <h3 style="margin-top:0">On The Merch</h3>
-        <ul class="tier-list">
-          <li>Sleeve print, Drop 02</li>
-          <li>Bot + pit + site</li>
-        </ul>
-      </article>
-      <article class="card rv rv-2 tier-title">
-        <p class="role" style="color:#FFD700">Title · €2000+</p>
-        <h3 style="margin-top:0">JBT × Your Brand</h3>
-        <ul class="tier-list">
-          <li>Co-title + top plate</li>
-          <li>Largest logos</li>
-        </ul>
-      </article>
-      <article class="card rv rv-3" style="display:flex;flex-direction:column;justify-content:center">
-        <h3 style="margin-top:0">Custom?</h3>
-        <p class="bio" style="margin:10px 0">Filament, CNC, transport — we tailor it.</p>
-        <a class="mailto" href="mailto:team@jbt.md?subject=Custom%20Sponsorship%20—%20JBT" style="margin-top:12px">Tailor a deal →</a>
-      </article>
+    <div class="tier-custom rv rv-2">
+      <span>Custom? Filament, CNC, transport — we tailor it.</span>
+      <a class="mailto" href="mailto:team@jbt.md?subject=Custom%20Sponsorship%20—%20JBT">Tailor a deal →</a>
     </div>
     <div class="rv" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
       <a class="btn btn-solid btn-big" href="mailto:team@jbt.md?subject=Sponsorship%20—%20JBT">Put logo on bot</a>
@@ -322,7 +284,7 @@ const html = `<a class="skip" href="#main">Skip to content</a>
 <section id="contact">
   <div class="container">
     <div class="sec-head rv">
-      <span class="sec-idx">08</span>
+      <span class="sec-idx">07</span>
       <div>
         <p class="kicker">Contact</p>
         <h2>Talk to us.</h2>
@@ -369,7 +331,7 @@ export default function Page() {
       <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: html }} />
       <script type="importmap" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}` }} />
       <script suppressHydrationWarning src="/main.js"></script>
-      <script suppressHydrationWarning type="module" src="/viewer.js?v=9"></script>
+      <script suppressHydrationWarning type="module" src="/viewer.js?v=10"></script>
     </>
   );
 }

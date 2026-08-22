@@ -1,54 +1,93 @@
+// JBT arsenal viewer — three.js, pre-built GLBs, explode + reset + auto-rotate.
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/DRACOLoader.js'
+
 document.querySelectorAll('.v3d').forEach(el=>{
   const src=el.dataset.src
   const size=el.dataset.size||''
   const preview=el.dataset.preview||''
-  el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#111">
-    ${preview?`<img src="${preview}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.35">`:''}
-    <span style="position:relative;font:500 .7rem var(--mono);letter-spacing:.15em;color:var(--faint)">${size}</span>
-    <button class="v3d-load btn" style="position:relative;padding:10px 18px;font-size:.7rem">LOAD 3D → EXPLODE</button>
-    <span style="position:relative;font:400 .6rem var(--mono);color:var(--faint)">pre-built GLB, no parsing</span>
+  el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0b0b0d">
+    ${preview?`<img src="${preview}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.3">`:''}
+    <span style="position:relative;font:500 .68rem var(--mono);letter-spacing:.22em;color:var(--faint)">${size}</span>
+    <button class="v3d-btn v3d-load" type="button" style="position:relative">Load model</button>
+    <span style="position:relative;font:400 .58rem var(--mono);letter-spacing:.14em;color:var(--faint)">PRE-BUILT GLB · NO PARSING</span>
   </div>`
-  const btn=el.querySelector('.v3d-load')
-  btn.onclick=()=>init()
+  el.querySelector('.v3d-load').onclick=init
+
   async function init(){
-    btn.textContent='LOADING…'; btn.disabled=true
-    const w=el.clientWidth,h=el.clientHeight||w*0.625
-    const scene=new THREE.Scene(); scene.background=new THREE.Color(0x111111)
+    const btn=el.querySelector('.v3d-load')
+    if(btn){btn.textContent='LOADING…';btn.disabled=true}
+    const w=el.clientWidth,h=el.clientHeight||w*0.5625
+    const scene=new THREE.Scene()
+    scene.background=new THREE.Color(0x0b0b0d)
+    scene.fog=new THREE.Fog(0x0b0b0d,10,60)
     const camera=new THREE.PerspectiveCamera(45,w/h,0.1,1000)
-    const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(w,h); renderer.setPixelRatio(devicePixelRatio)
-    el.innerHTML=''; el.appendChild(renderer.domElement)
-    const loading=document.createElement('div'); loading.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);color:var(--faint);font:500 .7rem var(--mono)'; loading.textContent='FETCHING GLB…'; el.appendChild(loading)
-    const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true
-    scene.add(new THREE.HemisphereLight(0xffffff,0x222222,1.2))
-    const dl=new THREE.DirectionalLight(0xffffff,1); dl.position.set(5,10,7); scene.add(dl)
-    const group=new THREE.Group(); scene.add(group)
-    let meshes=[],center=new THREE.Vector3(),exploded=false
-    const ro=new ResizeObserver(()=>{const nw=el.clientWidth,nh=el.clientHeight; camera.aspect=nw/nh; camera.updateProjectionMatrix(); renderer.setSize(nw,nh)}); ro.observe(el)
+    const renderer=new THREE.WebGLRenderer({antialias:true})
+    renderer.setSize(w,h);renderer.setPixelRatio(Math.min(devicePixelRatio,2))
+    el.innerHTML='';el.appendChild(renderer.domElement)
+    const controls=new OrbitControls(camera,renderer.domElement)
+    controls.enableDamping=true
+    controls.autoRotate=true;controls.autoRotateSpeed=1.1
+    controls.addEventListener('start',()=>{controls.autoRotate=false})
+    // lights: neutral key, purple rim — machined look
+    scene.add(new THREE.HemisphereLight(0xdfe4ea,0x0a0a0c,1.05))
+    const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(5,10,7);scene.add(key)
+    const rim=new THREE.DirectionalLight(0x8A2BE2,1.1);rim.position.set(-6,4,-6);scene.add(rim)
+    const group=new THREE.Group();scene.add(group)
+    const meshes=[];const center=new THREE.Vector3();let exploded=false
+    let grid=null
+    const ro=new ResizeObserver(()=>{
+      const nw=el.clientWidth,nh=el.clientHeight
+      camera.aspect=nw/nh;camera.updateProjectionMatrix();renderer.setSize(nw,nh)
+    });ro.observe(el)
     try{
       const loader=new GLTFLoader()
+      const draco=new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+      loader.setDRACOLoader(draco)
       const gltf=await new Promise((res,rej)=>loader.load(src,res,undefined,rej))
-      loading.textContent='BUILDING…'
-      gltf.scene.traverse(o=>{ if(o.isMesh){ o.material=new THREE.MeshStandardMaterial({color:0x8A2BE2, metalness:0.4, roughness:0.6}); meshes.push(o) } })
+      const steel=()=>new THREE.MeshStandardMaterial({color:0x8d939c,metalness:.85,roughness:.32})
+      gltf.scene.traverse(o=>{if(o.isMesh){o.material=steel();meshes.push(o)}})
       group.add(gltf.scene)
       const bbox=new THREE.Box3().setFromObject(group)
-      const s=bbox.getSize(new THREE.Vector3()), c=bbox.getCenter(new THREE.Vector3())
-      center.copy(c); group.position.sub(c)
-      const maxDim=Math.max(s.x,s.y,s.z), dist=maxDim*1.6
-      camera.position.set(dist*0.7,dist*0.5,dist*0.9); controls.target.set(0,0,0); controls.update()
-      // per-mesh explode vectors: from center to mesh center
-      meshes.forEach(m=>{ const b=new THREE.Box3().setFromObject(m); const mc=b.getCenter(new THREE.Vector3()); m.userData.orig=m.position.clone(); m.userData.mc=mc.sub(center).multiplyScalar(0.02) })
-      loading.remove()
-    }catch(e){ console.error(e); el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#111;padding:16px;text-align:center">
-      <span style="color:#f88;font:500 .68rem var(--mono)">FAILED TO LOAD GLB</span>
-      <a href="${src}" class="btn">DOWNLOAD GLB</a>
-    </div>`; return}
-    function explode(f){ meshes.forEach(m=>{ if(f===0) m.position.copy(m.userData.orig); else m.position.copy(m.userData.orig.clone().add(m.userData.mc.clone().multiplyScalar(f*25)) ) }) }
+      const s=bbox.getSize(new THREE.Vector3()),c=bbox.getCenter(new THREE.Vector3())
+      center.copy(c);group.position.sub(c)
+      const maxDim=Math.max(s.x,s.y,s.z),dist=maxDim*1.6
+      camera.position.set(dist*0.7,dist*0.5,dist*0.9)
+      controls.target.set(0,0,0);controls.update()
+      grid=new THREE.GridHelper(maxDim*4,24,0x2c2f33,0x1a1c1f)
+      grid.position.y=-s.y/2-maxDim*0.12
+      scene.add(grid)
+      meshes.forEach(m=>{
+        const b=new THREE.Box3().setFromObject(m)
+        const mc=b.getCenter(new THREE.Vector3())
+        m.userData.orig=m.position.clone()
+        m.userData.mc=mc.sub(center).multiplyScalar(0.02)
+      })
+    }catch(e){
+      console.error(e)
+      el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0b0b0d;padding:16px;text-align:center">
+        <span style="color:#f88;font:500 .66rem var(--mono);letter-spacing:.14em">FAILED TO LOAD GLB</span>
+        <a href="${src}" class="v3d-btn" download>Download .GLB</a>
+      </div>`
+      return
+    }
     const card=el.closest('.card')
-    card.querySelector('.v3d-explode').onclick=()=>{ exploded=!exploded; explode(exploded?1:0) }
-    card.querySelector('.v3d-reset').onclick=()=>{ exploded=false; explode(0); controls.reset() }
-    ;(function animate(){ requestAnimationFrame(animate); controls.update(); renderer.render(scene,camera) })()
+    const explode=f=>meshes.forEach(m=>{
+      if(f===0)m.position.copy(m.userData.orig)
+      else m.position.copy(m.userData.orig.clone().add(m.userData.mc.clone().multiplyScalar(f*25)))
+    })
+    const exBtn=card.querySelector('.v3d-explode')
+    if(exBtn)exBtn.onclick=()=>{
+      exploded=!exploded;explode(exploded?1:0)
+      exBtn.textContent=exploded?'Assemble':'Explode'
+    }
+    const rsBtn=card.querySelector('.v3d-reset')
+    if(rsBtn)rsBtn.onclick=()=>{
+      exploded=false;explode(0);controls.reset();controls.autoRotate=true
+      if(exBtn)exBtn.textContent='Explode'
+    }
+    ;(function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)})()
   }
 })

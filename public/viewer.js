@@ -14,7 +14,11 @@ document.querySelectorAll('.v3d').forEach(el=>{
     <button class="v3d-btn v3d-load" type="button" style="position:relative">Load model</button>
     <span style="position:relative;font:400 .58rem var(--mono);letter-spacing:.14em;color:var(--faint)">PRE-BUILT GLB · NO PARSING</span>
   </div>`
-  el.querySelector('.v3d-load').onclick=init
+  // ponytail: auto-load when card nears viewport, no click needed
+  const io=new IntersectionObserver(es=>{
+    if(es.some(e=>e.isIntersecting)){io.disconnect();init()}
+  },{rootMargin:'200px'})
+  io.observe(el)
 
   async function init(){
     const btn=el.querySelector('.v3d-load')

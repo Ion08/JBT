@@ -89,7 +89,6 @@ const html = `<a class="skip" href="#main">Skip to content</a>
             <p class="bio">Carbon arm, high reach. Study for weapon geometry.</p>
             <div class="v3d-ctl">
               <a class="v3d-btn" href="beetleweight-combat-robot-yeetus-v3-1.snapshot.2.zip" download>ZIP</a>
-              <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
           </div>
@@ -111,7 +110,6 @@ const html = `<a class="skip" href="#main">Skip to content</a>
             <p class="bio">Compact 4WD vert. Study for durability and packaging.</p>
             <div class="v3d-ctl">
               <a class="v3d-btn" href="kintsurugi-v1-beetleweight-combat-robot-1.snapshot.1.zip" download>ZIP</a>
-              <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
           </div>
@@ -133,7 +131,6 @@ const html = `<a class="skip" href="#main">Skip to content</a>
             <p class="bio">3D-printed plastic antweight. Closest to JB-01.</p>
             <div class="v3d-ctl">
               <a class="v3d-btn" href="plastic-antweight-combat-robot-jigsaw-1.snapshot.2.zip" download>ZIP</a>
-              <button class="v3d-btn v3d-explode" type="button">Explode</button>
               <button class="v3d-btn v3d-reset" type="button">Reset</button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-// JBT arsenal viewer — three.js, pre-built GLBs, explode + reset + auto-rotate.
+// JBT arsenal viewer — three.js, pre-built GLBs, reset + auto-rotate.
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js'
@@ -40,7 +40,6 @@ document.querySelectorAll('.v3d').forEach(el=>{
     const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(5,10,7);scene.add(key)
     const rim=new THREE.DirectionalLight(0x8A2BE2,1.1);rim.position.set(-6,4,-6);scene.add(rim)
     const group=new THREE.Group();scene.add(group)
-    const meshes=[];const center=new THREE.Vector3();let exploded=false
     let grid=null
     const ro=new ResizeObserver(()=>{
       const nw=el.clientWidth,nh=el.clientHeight
@@ -52,7 +51,7 @@ document.querySelectorAll('.v3d').forEach(el=>{
       loader.setDRACOLoader(draco)
       const gltf=await new Promise((res,rej)=>loader.load(src,res,undefined,rej))
       const steel=()=>new THREE.MeshStandardMaterial({color:0x8d939c,metalness:.85,roughness:.32})
-      gltf.scene.traverse(o=>{if(o.isMesh){o.material=steel();meshes.push(o)}})
+      gltf.scene.traverse(o=>{if(o.isMesh)o.material=steel()})
       group.add(gltf.scene)
       const bbox=new THREE.Box3().setFromObject(group)
       const s=bbox.getSize(new THREE.Vector3()),c=bbox.getCenter(new THREE.Vector3())
@@ -63,12 +62,6 @@ document.querySelectorAll('.v3d').forEach(el=>{
       grid=new THREE.GridHelper(maxDim*4,24,0x2c2f33,0x1a1c1f)
       grid.position.y=-s.y/2-maxDim*0.12
       scene.add(grid)
-      meshes.forEach(m=>{
-        const b=new THREE.Box3().setFromObject(m)
-        const mc=b.getCenter(new THREE.Vector3())
-        m.userData.orig=m.position.clone()
-        m.userData.mc=mc.sub(center).multiplyScalar(0.02)
-      })
     }catch(e){
       console.error(e)
       el.innerHTML=`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0b0b0d;padding:16px;text-align:center">
@@ -78,19 +71,9 @@ document.querySelectorAll('.v3d').forEach(el=>{
       return
     }
     const card=el.closest('.card')
-    const explode=f=>meshes.forEach(m=>{
-      if(f===0)m.position.copy(m.userData.orig)
-      else m.position.copy(m.userData.orig.clone().add(m.userData.mc.clone().multiplyScalar(f*25)))
-    })
-    const exBtn=card.querySelector('.v3d-explode')
-    if(exBtn)exBtn.onclick=()=>{
-      exploded=!exploded;explode(exploded?1:0)
-      exBtn.textContent=exploded?'Assemble':'Explode'
-    }
     const rsBtn=card.querySelector('.v3d-reset')
     if(rsBtn)rsBtn.onclick=()=>{
-      exploded=false;explode(0);controls.reset();controls.autoRotate=true
-      if(exBtn)exBtn.textContent='Explode'
+      controls.reset();controls.autoRotate=true
     }
     ;(function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)})()
   }

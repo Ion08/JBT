@@ -55,7 +55,7 @@ document.querySelectorAll('.v3d').forEach(el=>{
       group.add(gltf.scene)
       const bbox=new THREE.Box3().setFromObject(group)
       const s=bbox.getSize(new THREE.Vector3()),c=bbox.getCenter(new THREE.Vector3())
-      center.copy(c);group.position.sub(c)
+      group.position.sub(c)
       const maxDim=Math.max(s.x,s.y,s.z),dist=maxDim*1.6
       camera.position.set(dist*0.7,dist*0.5,dist*0.9)
       controls.target.set(0,0,0);controls.update()

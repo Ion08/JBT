@@ -38,7 +38,7 @@ document.querySelectorAll('.v3d').forEach(el=>{
     // lights: neutral key, purple rim — machined look
     scene.add(new THREE.HemisphereLight(0xdfe4ea,0x0a0a0c,1.05))
     const key=new THREE.DirectionalLight(0xffffff,.9);key.position.set(5,10,7);scene.add(key)
-    const rim=new THREE.DirectionalLight(0x00C853,1.1);rim.position.set(-6,4,-6);scene.add(rim)
+    const rim=new THREE.DirectionalLight(0x8A2BE2,1.1);rim.position.set(-6,4,-6);scene.add(rim)
     const group=new THREE.Group();scene.add(group)
     let grid=null
     const ro=new ResizeObserver(()=>{

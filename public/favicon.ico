@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" fill="#0a0a0a"/>
-  <rect x="4" y="4" width="56" height="56" fill="none" stroke="#00C853" stroke-width="4"/>
+  <rect x="4" y="4" width="56" height="56" fill="none" stroke="#8A2BE2" stroke-width="4"/>
   <text x="32" y="42" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="24" fill="#e8e8e8">JBT</text>
 </svg>

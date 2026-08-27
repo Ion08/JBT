@@ -236,41 +236,38 @@ const html = `<a class="skip" href="#main">Skip to content</a>
         <h2>Put your logo on the bot.</h2>
       </div>
     </div>
+    <p class="lede rv rv-2" style="margin-top:28px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Pachetele de sponsorizare</p>
     <div class="tiers rv rv-3">
       <div class="tier-row">
-        <span class="tier-name">Supporter</span>
-        <span class="tier-price">€50+</span>
-        <span class="tier-perks">Name on site · social post</span>
-        <span class="tier-flag"></span>
-      </div>
-      <div class="tier-row">
         <span class="tier-name">Bronze</span>
-        <span class="tier-price">€150+</span>
-        <span class="tier-perks">Logo on pit banner (1.5m) · logo on site</span>
+        <span class="tier-price">200 EUR</span>
+        <span class="tier-perks">logo pe site, numele companiei pe site și o postare dedicată pe rețelele sociale</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row">
         <span class="tier-name">Silver</span>
-        <span class="tier-price">€400+</span>
-        <span class="tier-perks">Logo on JB-01 armor · pit + site</span>
+        <span class="tier-price">400 EUR</span>
+        <span class="tier-perks">logo pe bannerul echipei în zona de pit și toate beneficiile incluse în Pachetul Bronze</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row">
         <span class="tier-name">Gold</span>
-        <span class="tier-price">€800+</span>
-        <span class="tier-perks">Sleeve print, Drop 02 · bot + pit + site</span>
+        <span class="tier-price">800 EUR</span>
+        <span class="tier-perks">toate beneficiile Pachetului Silver, plus logo-ul companiei aplicat pe robot</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row hot">
         <span class="tier-name">Title</span>
-        <span class="tier-price">€2000+</span>
-        <span class="tier-perks">JBT × your brand — co-title + top plate, largest logos</span>
+        <span class="tier-price">2000 EUR+</span>
+        <span class="tier-perks">co-branding JBT × marca ta, logo și numele companiei pe merchandise, plus toate beneficiile Pachetului Gold</span>
         <span class="tier-flag">Top tier</span>
       </div>
-    </div>
-    <div class="tier-custom rv rv-2">
-      <span>Custom? Filament, CNC, transport — we tailor it.</span>
-      <a class="mailto" href="mailto:ionpavelescu08@gmail.com?subject=Custom%20Sponsorship%20—%20JBT">Tailor a deal →</a>
+      <div class="tier-row">
+        <span class="tier-name">Personalizat</span>
+        <span class="tier-price">la cerere</span>
+        <span class="tier-perks">adaptăm colaborarea la nevoile companiei: filament, componente CNC, transport sau alte resurse</span>
+        <span class="tier-flag"></span>
+      </div>
     </div>
     <div class="rv" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
       <a class="btn btn-solid btn-big" href="mailto:ionpavelescu08@gmail.com?subject=Sponsorship%20—%20JBT">Put logo on bot</a>

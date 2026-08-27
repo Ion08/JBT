@@ -238,38 +238,32 @@ const html = `<a class="skip" href="#main">Skip to content</a>
     </div>
     <div class="tiers rv rv-3">
       <div class="tier-row">
-        <span class="tier-name">Supporter</span>
-        <span class="tier-price">€50+</span>
-        <span class="tier-perks">Name on site · social post</span>
-        <span class="tier-flag"></span>
-      </div>
-      <div class="tier-row">
         <span class="tier-name">Bronze</span>
-        <span class="tier-price">€150+</span>
-        <span class="tier-perks">Logo on pit banner (1.5m) · logo on site</span>
+        <span class="tier-price">€200</span>
+        <span class="tier-perks">Logo on site · company name on site · dedicated social post</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row">
         <span class="tier-name">Silver</span>
-        <span class="tier-price">€400+</span>
-        <span class="tier-perks">Logo on JB-01 armor · pit + site</span>
+        <span class="tier-price">€400</span>
+        <span class="tier-perks">Logo on team pit banner · all Bronze benefits</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row">
         <span class="tier-name">Gold</span>
-        <span class="tier-price">€800+</span>
-        <span class="tier-perks">Sleeve print, Drop 02 · bot + pit + site</span>
+        <span class="tier-price">€800</span>
+        <span class="tier-perks">All Silver benefits · company logo on the robot</span>
         <span class="tier-flag"></span>
       </div>
       <div class="tier-row hot">
         <span class="tier-name">Title</span>
         <span class="tier-price">€2000+</span>
-        <span class="tier-perks">JBT × your brand — co-title + top plate, largest logos</span>
+        <span class="tier-perks">JBT × your brand co-branding · logo &amp; name on merchandise · all Gold benefits</span>
         <span class="tier-flag">Top tier</span>
       </div>
     </div>
     <div class="tier-custom rv rv-2">
-      <span>Custom? Filament, CNC, transport — we tailor it.</span>
+      <span>Custom? Filament, CNC parts, transport — we tailor it to your needs.</span>
       <a class="mailto" href="mailto:team@jbt.md?subject=Custom%20Sponsorship%20—%20JBT">Tailor a deal →</a>
     </div>
     <div class="rv" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
